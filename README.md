@@ -3,19 +3,20 @@
 
 ### DB Setup
   ```
-    createdb todo
-    psql todo
-    ```
-      todo=# CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
-      todo=# \q
-    ```
   ```
 
 ### To install:
 
 ```
   npm install
+  createdb todo
+  psql todo
+  ```
+    todo=# CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+    todo=# \q
+  ```
   knex migrate:latest
+  knex seed:run
 ```
 
 ### To run:
