@@ -4,6 +4,13 @@
 ### To install:
 ```
   npm install
+  createdb todo
+  psql todo
+  ```
+    CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+    \q
+  ```
+  knex migrate:latest
 ```
 
 ### To run:
