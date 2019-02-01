@@ -5,6 +5,15 @@ import * as Todo from '../db/queries/todos';
 export const router = new Router();
 const BASE_URL = `/api/todo`;
 
+const genericErrorHandler = (err, ctx) => {
+  console.log(err)
+  ctx.status = 500;
+  ctx.body = {
+    status: 'error',
+    message: err.message || 'Sorry, an error has occurred.'
+  };
+}
+
 router.get(BASE_URL, async (ctx) => {
     try {
       const todos = await Todo.findAll(ctx.query.completed);
@@ -12,9 +21,7 @@ router.get(BASE_URL, async (ctx) => {
         status: 'success',
         data: todos
       };
-    } catch (err) {
-      console.log(err)
-    }
+    } catch (err) { genericErrorHandler(err, ctx) }
 });
 
 router.get(`${BASE_URL}/:id`, async (ctx) => {
@@ -32,9 +39,7 @@ router.get(`${BASE_URL}/:id`, async (ctx) => {
         message: 'Sorry, That todo does not exist.'
       };
     }
-  } catch (err) {
-    console.log(err)
-  }
+  } catch (err) { genericErrorHandler(err, ctx) }
 })
 
 router.post(`${BASE_URL}`, async (ctx) => {
@@ -53,14 +58,7 @@ router.post(`${BASE_URL}`, async (ctx) => {
         message: 'Something went wrong.'
       };
     }
-  } catch (err) {
-    console.log(err)
-    ctx.status = 500;
-    ctx.body = {
-      status: 'error',
-      message: err.message || 'Sorry, an error has occurred.'
-    };
-  }
+  } catch (err) { genericErrorHandler(err, ctx) }
 })
 
 router.put(`${BASE_URL}/:id`, async (ctx) => {
@@ -79,14 +77,7 @@ router.put(`${BASE_URL}/:id`, async (ctx) => {
         message: 'Sorry, That todo does not exist.'
       };
     }
-  } catch (err) {
-    console.log(err)
-    ctx.status = 500;
-    ctx.body = {
-      status: 'error',
-      message: err.message || 'Sorry, an error has occurred.'
-    };
-  }
+  } catch (err) { genericErrorHandler(err, ctx) }
 })
 
 
@@ -106,12 +97,5 @@ router.delete(`${BASE_URL}/:id`, async (ctx) => {
         message: 'Sorry, That todo does not exist.'
       };
     }
-  } catch (err) {
-    console.log(err)
-    ctx.status = 500;
-    ctx.body = {
-      status: 'error',
-      message: err.message || 'Sorry, an error has occurred.'
-    };
-  }
+  } catch (err) { genericErrorHandler(err, ctx) }
 })
