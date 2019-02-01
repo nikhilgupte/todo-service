@@ -1,10 +1,6 @@
 # TODO Service user Koa and Knex
 
 
-### DB Setup
-  ```
-  ```
-
 ### To install:
 
 ```
