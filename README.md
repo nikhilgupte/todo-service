@@ -1,15 +1,20 @@
 # TODO Service user Koa and Knex
 
 
+### DB Setup
+  ```
+    createdb todo
+    psql todo
+    ```
+      todo=# CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+      todo=# \q
+    ```
+  ```
+
 ### To install:
+
 ```
   npm install
-  createdb todo
-  psql todo
-  ```
-    CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
-    \q
-  ```
   knex migrate:latest
 ```
 
