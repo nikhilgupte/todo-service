@@ -27,7 +27,7 @@ router.get(BASE_URL, async (ctx) => {
 router.get(`${BASE_URL}/:id`, async (ctx) => {
   try {
     const todo = await Todo.find(ctx.params.id);
-    if (todo.length) {
+    if (todo) {
       ctx.body = {
         status: 'success',
         data: todo

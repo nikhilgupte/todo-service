@@ -9,7 +9,7 @@ export const findAll = (completed?: boolean) => {
   return results;
 }
 
-export const find = (id: string) => knex('todos').select('*').where({ id });
+export const find = (id: string) => knex('todos').select('*').where({ id }).first();
 
 export const create = (todo) => knex('todos').insert(todo).returning('*');
 
